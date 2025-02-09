@@ -1,0 +1,3 @@
+this is a placeholder for ML for video to time series data conversion
+
+this should involve using yolo
