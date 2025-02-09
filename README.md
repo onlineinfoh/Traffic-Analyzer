@@ -1,7 +1,7 @@
 # 🚦 Traffic Analyzer - Smart Traffic Light Optimization
 
 ## Overview
-Traffic Analyzer is an AI-powered web application designed for government agencies to analyze traffic patterns and optimize traffic light durations. It uses **YOLO (Object Detection)** and an **LSTM (RNN) Model** to process traffic video footage and predict optimal traffic light intervals.
+Traffic Analyzer is an AI-powered web application designed for government agencies to analyze traffic patterns for their future optimization on traffic light durations. It uses **YOLO (Object Detection)** and an **LSTM (RNN) Model** to process traffic video footage and predict future traffic flow.
 
 ## Features
 - **Video Processing with YOLO & OpenCV**
