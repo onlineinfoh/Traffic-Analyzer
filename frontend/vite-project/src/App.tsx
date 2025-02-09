@@ -1,8 +1,7 @@
-import React from 'react'
 import { Routes, Route, NavLink } from 'react-router-dom'
 import Home from './home'
 import Upload from './upload'
-import Results from './results'
+import Results from './Results'
 
 function App() {
   return (

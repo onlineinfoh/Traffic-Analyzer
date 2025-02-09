@@ -1,5 +1,4 @@
 // src/Results.tsx
-import React from 'react'
 
 function Results() {
   return (
