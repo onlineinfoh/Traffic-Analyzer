@@ -1,0 +1,116 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border selection:bg-primary/20 selection:text-foreground;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-500 hover:translate-y-[-8px] hover:bg-white/10
+           hover:shadow-[0_0_30px_rgba(59,130,246,0.2)];
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 glass rounded-lg font-medium
+           transition-all duration-300 ease-out
+           hover:scale-105 hover:bg-white/10
+           hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]
+           active:scale-95
+           relative overflow-hidden
+           before:content-['']
+           before:absolute before:inset-0
+           before:bg-gradient-to-r before:from-primary/20 before:to-transparent
+           before:translate-x-[-100%] before:hover:translate-x-[100%]
+           before:transition-transform before:duration-500;
+  }
+
+  .nav-item {
+    @apply px-4 py-2 rounded-lg transition-all duration-200
+           hover:bg-white/5 hover:text-primary
+           relative after:content-[''] after:absolute
+           after:bottom-0 after:left-0 after:w-full after:h-[2px]
+           after:bg-primary after:origin-left
+           after:scale-x-0 hover:after:scale-x-100
+           after:transition-transform after:duration-300;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes noise {
+  0% { transform: translate(0,0) }
+  10% { transform: translate(-5%,-5%) }
+  20% { transform: translate(-10%,5%) }
+  30% { transform: translate(5%,-10%) }
+  40% { transform: translate(-5%,15%) }
+  50% { transform: translate(-10%,5%) }
+  60% { transform: translate(15%,0) }
+  70% { transform: translate(0,10%) }
+  80% { transform: translate(-15%,0) }
+  90% { transform: translate(10%,5%) }
+  100% { transform: translate(5%,0) }
+}
+
+.animate-noise {
+  animation: noise 20s infinite linear;
+}
