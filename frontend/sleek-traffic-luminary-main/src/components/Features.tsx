@@ -4,23 +4,23 @@ import { LineChart, Activity, Globe, Zap } from "lucide-react";
 const features = [
   {
     icon: LineChart,
-    title: "Real-time Analytics",
-    description: "Monitor your traffic in real-time with comprehensive analytics and insights."
+    title: "AI-Powered Traffic Predictions",
+    description: "Our system uses a machine learning model to forecast traffic trends"
   },
   {
     icon: Activity,
-    title: "Performance Metrics",
-    description: "Track key performance indicators and optimize your traffic flow."
+    title: "Intuitive Video Uploads",
+    description: "Users can upload traffic crossing videos through a user-friendly interface."
   },
   {
     icon: Globe,
-    title: "Global Coverage",
-    description: "Analyze traffic patterns from anywhere in the world with our distributed network."
+    title: "Data Integration",
+    description: "The platform fetches and displays up-to-date traffic information."
   },
   {
     icon: Zap,
-    title: "Instant Insights",
-    description: "Get immediate notifications and alerts about important traffic changes."
+    title: "Modern Design",
+    description: "The UI features a sleek, dark-themed layout with clean white sections."
   }
 ];
 
