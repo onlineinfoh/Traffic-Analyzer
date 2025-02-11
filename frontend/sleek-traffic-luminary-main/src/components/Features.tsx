@@ -5,22 +5,22 @@ const features = [
   {
     icon: LineChart,
     title: "AI-Powered Traffic Predictions",
-    description: "Our system uses a machine learning model to forecast traffic trends"
+    description: "Leveraging a powerful Long Short-Term Memory (LSTM) machine learning model, our system predicts future traffic patterns with high accuracy."
   },
   {
     icon: Activity,
-    title: "Intuitive Video Uploads",
-    description: "Users can upload traffic crossing videos through a user-friendly interface."
+    title: "User-friendly Video Uploads",
+    description: "Our intuitive interface allows users to easily upload traffic crossing videos, ensuring a smooth experience."
   },
   {
     icon: Globe,
     title: "Data Integration",
-    description: "The platform fetches and displays up-to-date traffic information."
+    description: "The platform continuously fetches and displays up-to-date traffic information, keeping users informed at all times."
   },
   {
     icon: Zap,
     title: "Modern Design",
-    description: "The UI features a sleek, dark-themed layout with clean white sections."
+    description: "The User Interface features a minimalist and dark-themed layout with crisp white sections for an aesthetically pleasing experience."
   }
 ];
 
