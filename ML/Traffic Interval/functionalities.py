@@ -8,6 +8,8 @@ from copy import deepcopy
 from matplotlib.dates import DateFormatter
 
 def str_to_datetime(s):
+    if isinstance(s, (datetime.datetime, pd.Timestamp)):
+        return s
     split = s.split('-')
     year, month, day = int(split[0]), int(split[1]), int((split[2].split(' '))[0])
     time = (split[2].split(' '))[1].split(':')
@@ -26,7 +28,7 @@ def get_junction_data(data_path):
         junction_data[junction_num] = tem
     return junction_data
 
-def create_lstm_data(dataframe, first, last, n=7):
+def create_lstm_data(dataframe, first, last, n):
     first = str_to_datetime(first)
     last  = str_to_datetime(last)
     target = first
@@ -72,9 +74,8 @@ def lstm_data_split(lstm_data):
     Y = df_as_np[:, -1]
     return dates, X.astype(np.float32), Y.astype(np.float32)
 
-# Use the trained LSTM model to predict future values recursively
-
-def predict_future_with_lstm_model(model, last_known_window, last_date, n_days_ahead=30):
+# Predict future values
+def predict_future_with_lstm_model(model, last_known_window, last_date, n_days_ahead):
     n_hours = n_days_ahead * 24
     future_dates = []
     for i in range(n_hours):
@@ -204,15 +205,37 @@ def handle_web_request(data_path,junction_num,n_days_ahead,start_time,end_time,e
     df = pd.DataFrame({'Time': future_dates, 'Prediction': future_predictions})
     df.to_csv(f'{output_path}/future_traffic_predictions.csv', index=False)
 
+def get_training_option(data_path, junction_number):
+    junction_data = get_junction_data(data_path)
+    joc = junction_data[junction_number]
+    first_time = joc.index.min()
+    last_time = joc.index.max()
+    start_time = first_time + datetime.timedelta(hours=168)
+    print(f"\nUser requested the analysis of junction {junction_number}, which has start time at {first_time}, and end start at {last_time}\n")
+    print(f"To account for the interval shift during the LSTM model training process, the new start time is {start_time}\n")
+    print(f"{start_time} and {last_time} will be used for model  training")
+    return start_time,last_time
+
 ################################################################################################
 # END OF FUNCTIONS
 ################################################################################################
 
+# Sample usage, these variables need to be adjusted.
 data_path = './Data/traffic.csv'
 junction_number = 1
-start_time = '2015-12-03 00:00:00'
-end_time = '2016-12-02 00:00:00'
+start_time, end_time = get_training_option(data_path,junction_number)
 prediction_days_ahead = 3
-num_epochs = 50
 output_path = './Result'
-handle_web_request(data_path=data_path,junction_num=junction_number,n_days_ahead=prediction_days_ahead,start_time=start_time,end_time=end_time, epoch=num_epochs,output_path=output_path)
+
+num_epochs = 50 # Keep this the same
+handle_web_request(data_path=data_path,
+                   junction_num=junction_number,
+                   n_days_ahead=prediction_days_ahead,
+                   start_time=start_time,
+                   end_time=end_time, 
+                   epoch=num_epochs,
+                   output_path=output_path)
+
+################################################################################################
+# END OF EXAMPLE USAGE
+################################################################################################
