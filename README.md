@@ -4,6 +4,7 @@
 Traffic Analyzer is an AI-powered web application designed for government agencies to analyze traffic patterns for their future optimization on traffic light durations. It uses **YOLO (Object Detection)** and an **LSTM (RNN) Model** to process traffic video footage and predict future traffic flow.
 
 ## Features
+- **Use "pip install -r requirements.txt" to install all the dependencies needed**
 - **Video Processing with YOLO & OpenCV**
 - **AI Traffic Prediction (LSTM Model)**: Predicts future traffic flow trends.
 - **Web Interface (React.js)**: Allows users to upload videos and view predictions.
