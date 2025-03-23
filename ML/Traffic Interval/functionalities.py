@@ -170,21 +170,21 @@ def handle_web_request(data_path,junction_num,n_days_ahead,start_time,end_time,e
     plt.figure(figsize=(20,5))
     plt.plot(dates_train, train_predictions)
     plt.plot(dates_train, y_train)
-    plt.legend(['Training Predictions', 'Actual Values'])
+    plt.legend(['Training Predictions', 'Truth Values'])
     plt.savefig(f'{output_path}/training_predictions_vs_actual_values.png', dpi=300)
 
     val_predictions = model.predict(X_val).flatten()
     plt.figure(figsize=(20,5))
     plt.plot(dates_val, val_predictions)
     plt.plot(dates_val, y_val)
-    plt.legend(['Validation Predictions', 'Actual Values'])
+    plt.legend(['Validation Predictions', 'Truth Values'])
     plt.savefig(f'{output_path}/validation_predictions_vs_actual_values.png', dpi=300)
 
     test_predictions = model.predict(X_test).flatten()
     plt.figure(figsize=(20,5))
     plt.plot(dates_test, test_predictions)
     plt.plot(dates_test, y_test)
-    plt.legend(['Testing Predictions', 'Actual Values'])
+    plt.legend(['Testing Predictions', 'Truth Values'])
     plt.savefig(f'{output_path}/testing_predictions_vs_actual_values.png', dpi=300)
 
     future_predictions, future_dates = visualize_traffic_predictions(
@@ -202,7 +202,7 @@ def handle_web_request(data_path,junction_num,n_days_ahead,start_time,end_time,e
         output_path=output_path
     )
 
-    df = pd.DataFrame({'Time': future_dates, 'Prediction': future_predictions})
+    df = pd.DataFrame({'Time': future_dates, 'Predicted vehicle count': np.round(future_predictions).astype(int)})
     df.to_csv(f'{output_path}/future_traffic_predictions.csv', index=False)
 
 def get_training_option(data_path, junction_number):
