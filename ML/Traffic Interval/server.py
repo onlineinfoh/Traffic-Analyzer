@@ -1,6 +1,6 @@
 # server.py 
 from flask import Flask, jsonify, request, render_template
-from functionalities import handle_web_request
+from functionalities import handle_web_request, get_training_option
 import json
 import os
 
@@ -47,26 +47,9 @@ def predictions_endpoint():
         except Exception as e:
             return jsonify({"error": f"Failed to process request: {str(e)}"})
 
-@app.route('/results/')
-def download_file(filename):
-    """Serve generated prediction files."""
-    return send_from_directory(output_path, filename)
-
 if __name__ == "__main__":
     host = "127.0.0.1"
     port_number = 8080
-    z
     print(f"Starting server at {host}:{port_number}")
     print(f"Data path: {data_path}, Output directory: {output_path}")
     app.run(host, port_number)
-
-'''
-server.py is expected to sensd date in this format to the make_prediction function:
-
-*** {
-    "start_date": "2023-01-01 00:00:00",
-    "prediction_length": 24,
-    "interval": "hours",
-    "junction": INTEGER
-} ***
-'''
